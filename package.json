@@ -1,0 +1,33 @@
+{
+  "name": "react-virtualized-tree",
+  "version": "1.0.0",
+  "description": "A react tree component which can handle huge number of nodes using builtin virtualisation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuj16/react-virtualized-tree.git"
+  },
+  "keywords": [
+    "react",
+    "tree",
+    "virtualized",
+    "component",
+    "scalable"
+  ],
+  "author": "kumarshivratna@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anuj16/react-virtualized-tree/issues"
+  },
+  "homepage": "https://github.com/Anuj16/react-virtualized-tree#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "shortid": "^2.2.13"
+  }
+}

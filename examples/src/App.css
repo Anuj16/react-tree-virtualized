@@ -1,0 +1,246 @@
+.App {
+    height: 100vh;
+}
+
+.react-checkbox-tree {
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 13px;
+}
+.react-checkbox-tree button {
+    line-height: normal;
+    color: inherit;
+}
+.react-checkbox-tree button:disabled {
+    cursor: not-allowed;
+}
+.react-checkbox-tree label {
+    margin-bottom: 0;
+    width: 100%;
+    position: relative;
+    min-height: 16px;
+    text-align: left;
+}
+.react-checkbox-tree input {
+    display: none;
+}
+.react-checkbox-tree .rvt-disabled {
+    opacity: .75;
+}
+.react-checkbox-tree .rvt-disabled label {
+    cursor: not-allowed;
+}
+.react-checkbox-tree .rvt-disabled label:hover {
+    background: transparent;
+}
+.react-checkbox-tree .rvt-collapse,
+.react-checkbox-tree .rvt-checkbox {
+    margin: 0 5px;
+    padding: 0;
+    cursor: default;
+}
+.react-checkbox-tree .rvt-collapse *,
+.react-checkbox-tree .rvt-node-icon *,
+.react-checkbox-tree .rvt-checkbox * {
+    display: inline-block;
+    width: 12px;
+}
+.react-checkbox-tree .rvt-node-icon {
+    display: inline-block;
+    margin: 1px 0 0 0;
+}
+.react-checkbox-tree .rvt-node-icon img {
+    max-width: 20px;
+    max-height: 20px;
+    margin: -4px 2px 0 0;
+    width: 20px;
+}
+.react-checkbox-tree .rvt-text {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    padding: 7px 0 5px 0;
+    min-height: 30px;
+    position: relative;
+    z-index: 1;
+    font-family: 'SF Pro Text Medium', 'HelveticaNeue-Medium', sans-serif;
+    white-space: nowrap;
+}
+.react-checkbox-tree .rvt-text .rvt-title {
+    padding: 2px 5px 2px 3px;
+    color: #525252;
+}
+.react-checkbox-tree .rvt-text .disabled .rvt-title {
+    color: rgba(0, 0, 0, 0.4);
+}
+.react-checkbox-tree .rvt-text.evenNode {
+    background: #f5f5f5;
+}
+.react-checkbox-tree .rvt-collapse {
+    border: 0;
+    background: none;
+    line-height: normal;
+    color: inherit;
+    font-size: 12px;
+}
+.react-checkbox-tree.static-tree .rvt-text.selectedNode {
+    background: #4a90e2;
+}
+.react-checkbox-tree.static-tree .rvt-text.selectedNode .rvt-icon-expand-open {
+    filter: alpha(opacity=100);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+}
+.react-checkbox-tree.static-tree .rvt-text.selectedNode .rvt-title {
+    color: #fff;
+}
+.plainBackupTreeContainer .react-checkbox-tree.static-tree .rvt-text.evenNode {
+    background: #fff;
+}
+.plainBackupTreeContainer .react-checkbox-tree.static-tree .rvt-text.evenNode.selectedNode {
+    background: #4a90e2;
+}
+.rvt-icon.rvt-icon-uncheck,
+.rvt-icon.rvt-icon-check,
+.rvt-icon-half-check {
+    background-color: #fff;
+    border: 1px solid #a2a2a2;
+    display: inline-block;
+    height: 12px;
+    position: relative;
+    width: 12px;
+    border-radius: 3px;
+    margin: 2px 3px -2px 0;
+}
+.rvt-icon.rvt-icon-uncheck:before,
+.rvt-icon.rvt-icon-check:before,
+.rvt-icon-half-check:before {
+    content: "";
+}
+.rvt-icon.rvt-icon-check {
+    border: 1px solid #1973fd;
+    position: relative;
+    background: #1973fd;
+}
+.rvt-icon.rvt-icon-check:before {
+    position: absolute;
+    content: "";
+    width: 4px;
+    border-bottom: 2px solid #fff;
+    height: 7px;
+    border-right: 2px solid #fff;
+    margin: 0 0 0 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+.rvt-icon.rvt-icon-half-check {
+    border: 1px solid #1973fd;
+    position: relative;
+}
+.rvt-icon.rvt-icon-half-check:before {
+    position: absolute;
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #1973fd;
+    margin: 2px 0 0 2px;
+    border-radius: 2px;
+}
+.disabled .rvt-icon.rvt-icon-uncheck,
+.disabled .rvt-icon.rvt-icon-check {
+    filter: alpha(opacity=50);
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    background: #fff;
+    border: 1px solid #a2a2a2;
+}
+.disabled .rvt-icon.rvt-icon-check:before {
+    border-bottom: 2px solid #a2a2a2;
+    border-right: 2px solid #a2a2a2;
+}
+.rvt-collapse > .rvt-icon-expand-close {
+    float: left;
+    margin-top: -1px;
+    height: 14px;
+    background-image: url("./arrow-rt.svg");
+    background-size: 24px;
+    background-position: -5px -5px;
+    filter: alpha(opacity=50);
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.rvt-icon-expand-open {
+    float: left;
+    margin-top: 0;
+    height: 14px;
+    background-image: url("./arrow-dn.svg");
+    background-size: 24px;
+    background-position: -5px -5px;
+    filter: alpha(opacity=50);
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.static-tree .rvt-collapse > .selectedNode .rvt-icon-expand-close {
+    filter: alpha(opacity=100);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+}
+.static-tree .selectedNode .rvt-icon-expand-close {
+    filter: alpha(opacity=100);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+}
+.rvt-collapse > .rvt-icon-expand-close:hover {
+    opacity: 1;
+}
+.rvt-node-icon {
+    color: #33c;
+}
+.react-checkbox-tree .hiddenNode .rvt-title {
+    color: rgba(0, 0, 0, 0.4);
+}
+.folderNameWrp {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    padding-right: 10px;
+}
+.folderNameWrp .folderName {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 235px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    margin: -1px 0;
+}
+.folderNameWrp .folderName.lg {
+    width: 300px;
+}
+.folderNameWrp .folderConfg {
+    font-size: 11px;
+    color: #666;
+    font-weight: normal;
+    padding-left: 10px;
+}
