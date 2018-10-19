@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './tree.css';
 import Tree from './tree';
 import { nodes } from './data';
 
@@ -27,14 +27,14 @@ class App extends Component {
                 <Tree
                     noCascade={false}
                     checkable={true}
-                    showHiddenFiles={true}
                     nodes={nodes}
+                    expandDisabled={false}
                     checked={this.state.checked}
                     expanded={this.state.expanded}
                     loading={this.state.loading}
                     onCheck={this.onCheck}
                     onExpand={this.onExpand}
-                    showNodeIcon={false}
+                    optimisticToggle={true}
                 />
             </div>
         );

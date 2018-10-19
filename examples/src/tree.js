@@ -7,25 +7,17 @@ import ReactDOM from 'react-dom';
 
 import TreeNode from './treeNode';
 import nodeShape from './nodeShape';
-const keys = {
-    SPACEBAR : 32,
-    ENTER : 13,
-    RIGHTARROW : 39,
-    LEFTARROW : 37,
-    UPARROW : 38,
-    DOWNARROW : 40
-};
+
+import './tree.css';
 
 
 class Tree extends React.Component {
     static propTypes = {
         checkable: PropTypes.bool,
-        showHiddenFiles: PropTypes.bool,
         childHeight: PropTypes.number,
         nodes: PropTypes.arrayOf(nodeShape).isRequired,
         checked: PropTypes.arrayOf(PropTypes.string),
         loading: PropTypes.arrayOf(PropTypes.string),
-        disabled: PropTypes.bool,
         expandDisabled: PropTypes.bool,
         expanded: PropTypes.arrayOf(PropTypes.string),
         name: PropTypes.string,
@@ -39,12 +31,9 @@ class Tree extends React.Component {
 
     static defaultProps = {
         checkable: true,
-        showHiddenFiles: false,
         childHeight: 30,
-
         checked: [],
         loading: [],
-        disabled: false,
         expandDisabled: false,
         expanded: [],
         name: undefined,
@@ -62,7 +51,7 @@ class Tree extends React.Component {
         this.id = `rvt-${shortid.generate()}`;
         this.nodes = {};
 
-        this.flattenNodes(props.nodes, props.showHiddenFiles, props.expanded);
+        this.flattenNodes(props.nodes, props.expanded);
         this.unserializeLists({
             checked: props.checked,
             expanded: props.expanded,
@@ -86,10 +75,6 @@ class Tree extends React.Component {
             numberOfNodesToRender = Math.floor(treeContainer.clientHeight / this.props.childHeight) + 2,
             startNodeIndex = 0,
             endNodeIndex = startNodeIndex + numberOfNodesToRender - 1;
-            // treeContainerEle = document.getElementsByClassName("react-checkbox-tree");
-            // document.getElementsByClassName("icDataTableWrpInr")[0].addEventListener('keydown', this.onKeyDown, false);
-            // treeContainerEle[0].addEventListener('keyup', this.onKeyUp, false);
-        
 
         this.setState({
             numberOfNodesToRender,
@@ -98,59 +83,24 @@ class Tree extends React.Component {
         });
     }
 
-    componentWillReceiveProps({ nodes, checked, expanded, loading, showHiddenFiles }) {
-        if (!isEqual(this.props.nodes, nodes) || this.props.showHiddenFiles !== showHiddenFiles || !isEqual(this.props.expanded, expanded)) {
+    componentWillReceiveProps({ nodes, checked, expanded, loading }) {
+        if (!isEqual(this.props.nodes, nodes) || !isEqual(this.props.expanded, expanded)) {
             this.nodes = {};
-            this.flattenNodes(nodes, showHiddenFiles, expanded);
+            this.flattenNodes(nodes, expanded);
         }
 
         this.unserializeLists({ checked, expanded, loading });
     }
-    onKeyDown(e){
-        if (e.keyCode === keys.DOWNARROW || e.keyCode === keys.UPARROW || e.keyCode === keys.SPACEBAR) {
-            e.preventDefault();
-            
-          }
-    }
-    onKeyUp(e) {
-        this.currentEle = document.activeElement;
-        if (e.keyCode === keys.DOWNARROW) {
-          e.preventDefault();
-          let next = this.currentEle.nextSibling;
-          if (next && next.tagName === "DIV") {
-            this.currentEle.nextSibling.focus();
-          }
-        }
-        if (e.keyCode === keys.UPARROW) {
-          e.preventDefault();
-          let next = this.currentEle.previousSibling;
-          if (next && next.tagName === "DIV") {
-            this.currentEle.previousSibling.focus();
-          }
-        }
-        if (e.keyCode === keys.SPACEBAR) {
-          e.preventDefault();
-          this.currentEle.getElementsByTagName("label")[0].click();
-        }
-        if (e.keyCode === keys.RIGHTARROW) {
-          e.preventDefault();
-          if(!this.currentEle.classList.contains('expanded-node')){
-              this.currentEle.getElementsByTagName("button")[0].click();
-              this.currentEle.setAttribute("aria-expanded","true");
-          }
-        }
-        if (e.keyCode === keys.LEFTARROW) {
-            e.preventDefault();
-            if(this.currentEle.classList.contains('expanded-node')){
-                this.currentEle.getElementsByTagName("button")[0].click();
-                this.currentEle.setAttribute("aria-expanded","false");
-            }
-        }
-    }
+
     onCheck(node) {
-        const { noCascade, onCheck } = this.props;
+        const { checkable, noCascade, onCheck } = this.props;
         this.toggleChecked(node, node.checked, noCascade);
-        onCheck(this.serializeList('checked'), node);
+
+        if(checkable) {
+            onCheck(this.serializeList('checked'), node);
+        } else {
+            onCheck([node.value], node);
+        }
     }
 
     onExpand(node) {
@@ -210,7 +160,7 @@ class Tree extends React.Component {
         this.nodes[node.value][key] = toggleValue;
     }
 
-    flattenNodes(nodes, showHiddenFiles, expanded, parentNodeValue='root') {
+    flattenNodes(nodes, expanded, parentNodeValue='root') {
         if (!Array.isArray(nodes) || nodes.length === 0) {
             return;
         }
@@ -225,7 +175,7 @@ class Tree extends React.Component {
                 this.nodes[node.value][key] = node[key];            
             }
 
-            this.flattenNodes(node.children, showHiddenFiles, expanded, node.value);
+            this.flattenNodes(node.children, expanded, node.value);
         });
     }
 
@@ -278,25 +228,16 @@ class Tree extends React.Component {
     }
 
     renderTreeNodes(nodes) {
-        const { showHiddenFiles, expandDisabled, noCascade, optimisticToggle, showNodeIcon } = this.props;
-        let checkable = this.props.checkable;
+        const { checkable, expandDisabled, noCascade, optimisticToggle, showNodeIcon } = this.props;
         const treeNodes = nodes.map((node) => {
             const key = `${node.value}`;
             const checked = this.getCheckState(node, noCascade);
             const loading = this.getLoadingState(node);
-            let nodeCheckable = checkable;
             let firstNodeIndex = (this.state.startNodeIndex > 0 ? this.state.startNodeIndex-1 : this.state.startNodeIndex);
-            
-            // We not use checkable property for nodes except the 'inSync Share' node inside selective sync listing.
-            // Backend sends 'cehckable' as false for this node.
-            if(node.hasOwnProperty('checkable')) {
-                nodeCheckable = node.checkable;
-            }
 
             return (
                 <TreeNode
-                    checkable={nodeCheckable}
-                    showHiddenFiles={showHiddenFiles}
+                    checkable={checkable}
                     isLeaf={node.isLeaf}
                     key={key}
                     checked={checked}
@@ -404,17 +345,8 @@ class Tree extends React.Component {
     getDisplaybleNodesArray = (nodes) => {
         let nodesArray = [];
         Object.keys(nodes).forEach((key) => {
-            // If "showhiddenFiles" is true, display all the nodes except the ones whoose any of the parent is collapsed.
-            // Else, dsiplay the nodes which are not hidden and whoose any of the parent is not collapsed.
-            
-            if(this.props.showHiddenFiles) {
-                if(!this.isAnyParentCollapsed(nodes, nodes[key]) ) {
-                    nodesArray.push(nodes[key]);
-                }
-            } else {
-                if(!nodes[key].hidden && !this.isAnyParentCollapsed(nodes, nodes[key]) ) {
-                    nodesArray.push(nodes[key]);
-                }
+            if(!this.isAnyParentCollapsed(nodes, nodes[key]) ) {
+                nodesArray.push(nodes[key]);
             }
         });
 

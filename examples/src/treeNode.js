@@ -11,7 +11,6 @@ class TreeNode extends React.Component {
         checked: PropTypes.number.isRequired,
         disabled: PropTypes.bool,
         loading: PropTypes.bool,
-        hidden: PropTypes.bool,
         expandDisabled: PropTypes.bool.isRequired,
         expanded: PropTypes.bool.isRequired,
         label: PropTypes.string.isRequired,
@@ -38,7 +37,6 @@ class TreeNode extends React.Component {
         rawChildren: null,
         disabled: false,
         loading: false,
-        hidden: false,
         index: null
     };
 
@@ -184,20 +182,18 @@ class TreeNode extends React.Component {
     }
 
     render() {
-        const { checkable, showHiddenFiles, hidden, evenNode, checked, className, disabled, treeId, label, showNodeIcon, value, tooltipText, expanded, index, level, firstNodeIndex, isLeaf } = this.props;
+        const { checkable, evenNode, checked, className, disabled, treeId, label, showNodeIcon, value, tooltipText, expanded, index, level, firstNodeIndex, isLeaf } = this.props;
         const inputId = `${treeId}-${value}`;
         const nodeClass = classNames({
             'rvt-node': true,
             'rvt-node-parent': this.hasChildren(),
             'rvt-node-leaf': !this.hasChildren(),
-            'hiddenNode': hidden,
-            'hide': (hidden && !showHiddenFiles),
             'expanded-node': expanded
         }, className);
         const outerSpanClass = classNames({
             'rvt-text': true,
-            'selectedNode': (checked === 1),
-            'evenNode': evenNode,
+            'selected-node': (checked === 1),
+            'even-node': evenNode,
         });
         let labelText = isLeaf ? '': 'Folder'
         let blankSpacesArray = [];
