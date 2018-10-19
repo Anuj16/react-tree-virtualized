@@ -4,8 +4,7 @@
   "description": "A react tree component which can handle huge number of nodes using builtin virtualisation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-it"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -30,8 +29,5 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "shortid": "^2.2.13"
-  },
-  "devDependencies": {
-    "release-it": "^7.4.7"
   }
 }
