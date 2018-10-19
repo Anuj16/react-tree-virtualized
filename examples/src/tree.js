@@ -398,7 +398,7 @@ class Tree extends React.Component {
 
         const treeNodes = this.renderTreeNodes(nodesToRender);
         const className = classNames({
-            'react-checkbox-tree': true,
+            'react-virtualized-tree': true,
             'static-tree': !this.props.checkable,
             'rvt-disabled': this.props.disabled,
         });

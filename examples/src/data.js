@@ -5,7 +5,7 @@ const generateResponse = () => {
 
     for(var i=1; i<=2000; i++) {
         var node = {
-            label: 'Desktop' + i,
+            label: 'node-1-' + i,
             value: String(Math.random(1, 10000) + 1),
             level: 1,
             icon: folderIcon,
@@ -24,7 +24,7 @@ const generateResponse = () => {
 
 const nodes = [
     {
-        label: 'Quick Configuration',
+        label: 'node-1',
         value: '0-0',
         level: 0,
         icon: folderIcon,
@@ -35,7 +35,7 @@ const nodes = [
         children: generateResponse(),
     },
     {
-        label: 'My Computer',
+        label: 'node-2',
         value: '0-1',
         level: 0,
         icon: folderIcon,
@@ -45,8 +45,8 @@ const nodes = [
         expanded: true,
         children: [
             {
-                label: 'C:/',
-                value: '0-1-0',
+                label: 'node-2-0',
+                value: 'node-2-0',
                 level: 1,
                 icon: folderIcon,
                 isLeaf: false,
@@ -56,7 +56,7 @@ const nodes = [
                 children: []
             },
             {
-                label: 'E:/',
+                label: 'node-2-1',
                 value: '0-1-1',
                 level: 1,
                 icon: folderIcon,
