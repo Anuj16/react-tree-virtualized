@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>arrowdown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrowdown" fill="#000000">
+            <g id="Page-1" transform="translate(10.000000, 8.000000)">
+                <path d="M4.707,3.29277 L1.707,0.29277 C1.421,0.00677 0.992,-0.07823 0.617,0.07577 C0.243,0.22977 0,0.59577 0,0.99977 L0,6.99977 C0,7.40377 0.243,7.76977 0.617,7.92377 C0.741,7.97577 0.871,7.99977 1,7.99977 C1.26,7.99977 1.516,7.89777 1.707,7.70677 L4.707,4.70677 C5.098,4.31577 5.098,3.68377 4.707,3.29277" id="Fill-1"></path>
+            </g>
+        </g>
+    </g>
+</svg>

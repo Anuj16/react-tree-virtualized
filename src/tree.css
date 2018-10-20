@@ -178,7 +178,7 @@
     float: left;
     margin-top: -1px;
     height: 14px;
-    background-image: url("./arrow-rt.svg");
+    background-image: url("./assets/arrow-rt.svg");
     background-size: 24px;
     background-position: -5px -5px;
     filter: alpha(opacity=50);
@@ -190,7 +190,7 @@
     float: left;
     margin-top: 0;
     height: 14px;
-    background-image: url("./arrow-dn.svg");
+    background-image: url("./assets/arrow-dn.svg");
     background-size: 24px;
     background-position: -5px -5px;
     filter: alpha(opacity=50);

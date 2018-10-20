@@ -71,7 +71,7 @@ class Tree extends React.Component {
     }
 
     componentDidMount = () => {
-        const treeContainer = this.refs.insyncTreeContainer,
+        const treeContainer = this.treeContainer,
             numberOfNodesToRender = Math.floor(treeContainer.clientHeight / this.props.childHeight) + 2,
             startNodeIndex = 0,
             endNodeIndex = startNodeIndex + numberOfNodesToRender - 1;
@@ -314,7 +314,7 @@ class Tree extends React.Component {
         if(Object.keys(this.nodes).length <= this.numberOfNodesToRender) {
             return;
         }
-        const container = this.refs.insyncTreeContainer,
+        const container = this.treeContainer,
             containerDom = ReactDOM.findDOMNode(container),
             scrollTop = containerDom.scrollTop,
             startNodePosition = Math.ceil(scrollTop / this.props.childHeight),
@@ -404,7 +404,7 @@ class Tree extends React.Component {
         });
 
         return (
-            <div className={className} role="tree" onScroll={() => this.onScroll()} ref="insyncTreeContainer">
+            <div className={className} role="tree" onScroll={() => this.onScroll()} ref={(ref) => this.treeContainer = ref}>
                 {this.renderHiddenInput()}
                 <div style={{height: topDivHeight}} key="top"></div>
                 {treeNodes}

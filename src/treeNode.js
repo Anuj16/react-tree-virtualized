@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import nodeShape from './nodeShape';
-import loaderImage from './loader.gif';
+import loaderImage from './assets/loader.gif';
 
 class TreeNode extends React.Component {
     static propTypes = {
