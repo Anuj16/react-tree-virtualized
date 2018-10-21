@@ -91,6 +91,7 @@ export default App;
 
 ### Node props
 Every node object of above `nodes` prop can have following props.
+
 | prop | type | description | default value |
 | ------ | ------ | ------ | ------ |
 | label | `string` | **Required**. The display name of a node.
