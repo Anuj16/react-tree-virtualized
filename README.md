@@ -1,4 +1,4 @@
-# react-virtualized-tree
+# react-tree-virtualized
 A react tree component which can handle huge number of nodes using builtin virtualisation. It also supports asynchronous data fetching.
 
 - Demo :-
